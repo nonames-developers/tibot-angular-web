@@ -1,87 +1,89 @@
 /* You can add global styles to this file, and also import other style files */
 
 :root {
-  --primary-light: #b8c0ff;
-
-  --secondary-light: #bbd0ff;
-
-  --terciary-light: #b1dff6;
-
-  --text-light: #8d94c5
-}
-
-
-@font-face {
-  font-family: "masallera";
-  src: local("Edm"), url(./assets/fonts/MASSALLERA.TTF) format("truetype");
-}
-
-html {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-
-}
-
-
-body {
-  margin: 0;
-  padding: 0;
-
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-
-mat-dialog-container {
-  display: flex !important;
-  border-radius: 20px !important;
-  padding: 0px !important;
-  align-content: center;
-  align-items: center !important;
-}
-
-
-mat-dialog-actions button {
-  height: 20px !important;
-  border: none !important;
-  margin: 0px !important;
-  padding: 1px !important;
-  background-color: white !important;
-
-  align-self: flex-end !important;
-}
-
-
-mat-dialog-actions {
-    top: 0 !important;
-    
-    min-height: 10px !important;
-    margin: 0  !important;
-    padding: 0  !important;
-
-}
-
-
-a{ 
-  color: white;
-    text-decoration: none;
-}
-
-
-mat-dialog-actions button:hover(){
-  background-color: white !important;
-  border:solid !important;
-  color:var(--primary-light) !important;
-  border-width: 2px !important;
-  border-radius: 12px !important;
-  border-color:var(--primary-light) !important;
-}
+    --primary-light: #b8c0ff;
+  
+    --secondary-light: #bbd0ff;
+  
+    --terciary-light: #b1dff6;
+  
+    --text-light: #8d94c5
+  }
+  
+  
+  @font-face {
+    font-family: "masallera";
+    src: local("Edm"), url(./assets/fonts/MASSALLERA.TTF) format("truetype");
+  }
+  
+  html {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+  
+  }
+  
+  
+  body {
+    margin: 0;
+    padding: 0;
+  
+  }
+  
+  html,
+  body {
+    height: 100%;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+  
+  
+  mat-dialog-container {
+    display: flex !important;
+    border-radius: 20px !important;
+    padding: 0px !important;
+    align-content: center;
+    align-items: center !important;
+  }
+  
+  
+  mat-dialog-actions button {
+    height: 20px !important;
+    border: none !important;
+    margin: 0px !important;
+    padding: 1px !important;
+    background-color: white !important;
+  
+    align-self: flex-end !important;
+  }
+  
+  
+  mat-dialog-actions {
+      top: 0 !important;
+      
+      min-height: 10px !important;
+      margin: 0  !important;
+      padding: 0  !important;
+  
+  }
+  
+  
+  a{ 
+    color: white;
+      text-decoration: none;
+  }
+  
+  
+  mat-dialog-actions button:hover(){
+    background-color: white !important;
+    border:solid !important;
+    color:var(--primary-light) !important;
+    border-width: 2px !important;
+    border-radius: 12px !important;
+    border-color:var(--primary-light) !important;
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

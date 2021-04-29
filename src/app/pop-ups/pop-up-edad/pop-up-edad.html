@@ -1,18 +1,18 @@
 <div class="edadContainer">
-  <h1 mat-dialog-title>Control parental</h1>
-  <mat-dialog-content class="mat-typography">
-    <div class="edadBody">
-      <h3>Para acceder a esta configuración ingrese su año de nacimiento</h3>
-      <input type="number">
-      <h5>*Esta información no se almacena</h5>
-    </div>
-  </mat-dialog-content>
+    <h1 mat-dialog-title>Control parental</h1>
+    <mat-dialog-content >
+      <div class="edadBody">
+        <h3>Para acceder a esta configuración ingrese su año de nacimiento</h3>
+        <input type="number">
+        <h5>*Esta información no se almacena</h5>
+      </div>
+    </mat-dialog-content>
+    
+      <mat-dialog-actions  style="width:100%;" > 
+        <div class="edadBotones">
+        <button mat-button mat-dialog-close>Cerrar</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial><a routerLink="/ajustes" routerLinkActive="active">Acceder</a></button>
+      </div>
   
-    <mat-dialog-actions  style="width:100%;" > 
-      <div class="edadBotones">
-      <button mat-button mat-dialog-close>Cerrar</button>
-      <button mat-button [mat-dialog-close]="true" cdkFocusInitial><a routerLink="/ajustes" routerLinkActive="active">Acceder</a></button>
-    </div>
-
-  </mat-dialog-actions>
-</div>
+    </mat-dialog-actions>
+  </div>

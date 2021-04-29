@@ -23,15 +23,10 @@ export class BotonAjustesComponent implements OnInit {
   }
 }
 
-
-
-
-
-
 @Component({
   selector: 'pop-up-edad',
   templateUrl: './../pop-ups/pop-up-edad/pop-up-edad.html',
-  styleUrls: ['./../pop-ups/pop-up-edad/pop-up-edad.component.css']
+  styleUrls: ['./../pop-ups/pop-up-edad/pop-up-edad.componente.css']
 
 })
 export class PopUpEdadComponent {}

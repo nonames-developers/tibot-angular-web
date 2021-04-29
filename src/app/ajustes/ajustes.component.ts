@@ -24,11 +24,6 @@ export class AjustesComponent implements OnInit {
   }
 }
 
-
-
-
-
-
 @Component({
   selector: 'pop-up-reconocimiento',
   templateUrl: './../pop-ups/pop-up-reconocimiento/pop-up-reconocimiento.html',
