@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { JuegoComponent , JuegoSnackComponent} from './juego/juego.component';
@@ -16,7 +17,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faPause } from '@fortawesome/free-solid-svg-icons';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { BotonCerrarComponent } from './boton-cerrar/boton-cerrar.component';
-import { AjustesComponent,PopUpReconocimiento } from './ajustes/ajustes.component';
+import { AjustesComponent,PopUpReconocimiento,ConfirmacionExploracion } from './ajustes/ajustes.component';
 import { ControlManualComponent } from './control-manual/control-manual.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -37,9 +38,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     PopUpEdadComponent,
     PopUpReconocimiento,
     InicioComponent,
-    JuegoSnackComponent
-
-    
+    JuegoSnackComponent,
+    ConfirmacionExploracion
   ],
   imports: [
     BrowserModule,
@@ -47,7 +47,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     BrowserAnimationsModule,
     MatDialogModule,
     AppRoutingModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

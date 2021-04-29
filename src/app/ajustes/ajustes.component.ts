@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { DataService } from '../data.service';
+import {MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-ajustes',
@@ -9,7 +11,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class AjustesComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -27,21 +29,36 @@ export class AjustesComponent implements OnInit {
 @Component({
   selector: 'pop-up-reconocimiento',
   templateUrl: './../pop-ups/pop-up-reconocimiento/pop-up-reconocimiento.html',
-  styleUrls: ['./../pop-ups/pop-up-reconocimiento/pop-up-reconocimiento.css']
-
+  styleUrls: ['./../pop-ups/pop-up-reconocimiento/pop-up-reconocimiento.css'],
+  providers: [DataService]
 
 })
-export class PopUpReconocimiento implements OnInit{
+export class PopUpReconocimiento implements OnInit {
 
 
-constructor(private route: ActivatedRoute){
+  constructor(private _snackBar: MatSnackBar,private route: ActivatedRoute, private dataSvc: DataService) {
+
+  }
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(paramMap => {
+      console.log(paramMap)
+    })
+  }
+
+  explore(): void {
+    
+    this.dataSvc.startExploring().subscribe(res => {
+      console.log('Res', res)
+      this._snackBar.open("He acabado de reconocer!")
+    }) 
+  }
 
 }
 
-ngOnInit():void{
-  this.route.paramMap.subscribe( paramMap =>{
-    console.log(paramMap)
-  })
-}
 
-}
+@Component({
+  selector: 'confirmacion-snack',
+  templateUrl: 'confirmacion-snack.html',
+})
+export class ConfirmacionExploracion {}

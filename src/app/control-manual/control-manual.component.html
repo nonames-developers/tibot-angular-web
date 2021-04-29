@@ -5,23 +5,17 @@
   <div class="panelControles">
 
     <div class="arriba">
-      <button><i class="fa fa-arrow-up">w</i></button>
+      <button id="Delante" (click)="moveTo($event)">Arr</button>
     </div>
     <div class="lados">
-      <button><i class="fa fa-arrow-left">d</i>
-      </button>
-
-      <button class="btnPause"><i class="fa fa-pause">| |</i>
-
-      </button>
-      <button><i class="fa fa-arrow-right">a</i></button> </div>
+      <button id="Izquierda" (click)="moveTo($event)">Izq</button>
+      <button id="Stop" (click)="moveTo($event)"  class="btnPause">Pause<i class="fa fa-pause"></i> </button>
+      <button id="Derecha" (click)="moveTo($event)">Der</button>
     <div class="abajo">
-      <button><i class="fa fa-arrow-down">s</i></button> </div>
-
+      <button id="Atras" (click)="moveTo($event)">Abj</button>
     <div class="btn">
-      <button class="finalizar"><a routerLink="" routerLinkActive="active">Finalizar</a></button>
+      <button id="Stop" class="finalizar" (click)="moveTo($event)"><a routerLink="" routerLinkActive="active">Finalizar</a></button>
     </div>
-
   </div>
 
 </div>
