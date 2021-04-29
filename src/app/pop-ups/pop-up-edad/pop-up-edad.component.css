@@ -1,0 +1,74 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url(../../../assets/fonts/Montserrat-Regular.ttf);
+  }
+
+  
+
+.edadContainer {
+    font-family: Montserrat;
+    background-color: white!important;
+    border-radius: 20px;
+    padding: 10px;
+    color: #5a2987;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center!important;
+    width: 350px  !important;
+    height: 300px !important;
+    border: solid 12px var(--secondary-light);
+    text-align: center;
+    justify-content: space-around !important;
+ }
+
+  input{
+    border: solid 2px var(--secondary-light);
+    border-radius: 8px;
+
+    margin: 10px;
+
+    height: 20px;
+    box-shadow: inset 0 0 5px  rgb(207, 207, 207);
+
+  }
+
+
+ .edadContainer h5{
+
+
+color: var(--text-light); 
+}
+
+.edadBotones{
+ width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.edadBotones button a{
+
+
+    color: white;
+  }
+
+.edadBotones button {
+    height: 30px !important;
+    width: 100px;
+    color: white;
+    background-color: var(--secondary-light)  !important;
+    border: solid;
+    border-width: 2px;
+    border-radius: 12px;
+    border-color: white;
+    font-size: 20px;
+  }
+
+  button:hover(){
+    background-color: white !important;
+    border:solid !important;
+    color:var(--primary-light) !important;
+    border-width: 2px !important;
+    border-radius: 12px !important;
+    border-color:var(--primary-light) !important;
+  }

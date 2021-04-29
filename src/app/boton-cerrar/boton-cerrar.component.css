@@ -1,0 +1,37 @@
+
+.botonContainer{
+    text-align: center;
+    display: flex;
+justify-content: center;}
+
+
+.fondoBoton{
+    background-image: url(../../assets/img/fondo-btn.png);
+    height: 100px;
+    width: 180px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
+.textoBoton{
+    width: 100px;
+    margin-top:38px;
+    margin-left: 65px;
+    position: absolute;
+    color: white;
+    font-size: 20px;
+}
+
+
+.imagenRobot{
+    margin-top: 20px;
+    margin-left: 12px;
+    width: 60px;
+    height: 60px;
+    background-image: url(../../assets/img/robot-circulo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+}

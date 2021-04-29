@@ -1,0 +1,20 @@
+.ajustesBtn {
+  border: solid white 2px;
+  font-size: 20px;
+  color: white;
+  border-radius: 10px;
+  background-color: var(--terciary-light);
+  padding: 5px;
+  padding-right: 10px;
+  font-family: masallera;
+  margin-bottom: 5px;
+}
+
+.ajustesBtn i {
+  border-radius: 10px;
+
+  padding: 5px;
+  font-size: 20px;
+  background-color: var(--primary-light);
+  border: solid white 2px;
+}

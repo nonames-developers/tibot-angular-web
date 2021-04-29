@@ -1,0 +1,21 @@
+
+<div class="genContainer">
+<mat-dialog-actions> 
+    <button mat-button mat-dialog-close>x</button>
+  </mat-dialog-actions>
+
+<div class="recoContainer">
+
+    
+  <h1 mat-dialog-title>Modo de escaneo</h1>
+  <mat-dialog-content class="mat-typography">
+    <h2>Seleccione el modo de escaneo que desee.</h2>
+    <div class="recoBotones">
+      
+      <button mat-button  [mat-dialog-close]="true" cdkFocusInitial><a routerLink="/control-manual" routerLinkActive="active">Manual</a></button>
+      <button>Automático</button>
+    </div>
+  </mat-dialog-content>
+  
+</div>
+</div>

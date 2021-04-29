@@ -1,0 +1,80 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url(../../assets/fonts/Montserrat-Regular.ttf);
+}
+
+.ajustesContainer {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: Montserrat;
+
+}
+
+
+.ajustesTitle {
+  font-size: 30px;
+  color: #5a2987;
+  font-size: 35px;
+  text-shadow: 1px 1px 1px rgb(255, 255, 255);
+}
+
+.panel {
+  display: flex;
+  text-align: center;
+  height: 300px;
+  width: 500px;
+  background-color: #BBD0ff;
+  border-radius: 25px;
+  border: solid;
+  border-color: white;
+  box-shadow: 3px 3px 10px #73809e;
+  flex-direction: column;
+
+}
+
+.texto {
+  font-size: 16px;
+  color: white;
+  width: 270px;
+  margin-right: 60px;
+}
+
+
+.fila {
+  display: flex;
+  text-align: left;
+  padding-left: 50px;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  display: flex;
+  align-items: center;
+
+}
+
+button {
+  height: 40px;
+  width: 100px;
+  color: white;
+  background-color: #b8c0ff;
+  border: solid;
+  border-width: 2px;
+  border-radius: 12px;
+  border-color: white;
+}
+
+.fila i {
+
+  color: white;
+
+  padding: 5px;
+  font-size: 20px;
+}
+
+.fa-chevron-right {
+
+
+  margin-left: 50px;
+}

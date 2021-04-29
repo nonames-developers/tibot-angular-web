@@ -1,0 +1,9 @@
+.juegosContainer{
+    display: flex;
+    orientation: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+
+}

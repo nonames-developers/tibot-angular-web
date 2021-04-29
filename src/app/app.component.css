@@ -1,0 +1,29 @@
+.fondo {
+    
+    font-family: masallera;
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    background-image: url(../assets/img/fondo.png);
+    background-size: cover;
+}
+
+
+.header{
+    padding: 10px 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    vertical-align: text-bottom;
+
+}
+
+
+.header app-boton-ajustes{
+
+align-self: flex-end;}
