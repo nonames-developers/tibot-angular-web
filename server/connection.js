@@ -1,4 +1,4 @@
-const sqlite3 = require('sqlite3').verbose();
+const sqlite3 = require('sqlite3');
 
 class Connection {
 
@@ -20,7 +20,7 @@ class Connection {
     }
 
     closeConn() {
-        db.close((err) => {
+        this.conn.close((err) => {
             if (err) {
                 console.error(err.message);
             }
