@@ -1,8 +1,8 @@
 const sqlite3 = require('sqlite3').verbose();
 
-static class Connection {
+class Connection {
 
-    constructor(dbFilePath) {
+    constructor() {
         this.conn = null
     }
 
@@ -18,24 +18,16 @@ static class Connection {
         console.log('Connected to the tibot database.');
         return this.conn;
     }
+
+    closeConnection() {
+        db.close((err) => {
+            if (err) {
+                console.error(err.message);
+            }
+            console.log('Close the database connection.');
+        });
+    }
+
 }
 
-export default Connection
-
-db.serialize(() => {
-    db.each(`SELECT PlaylistId as id,
-                  Name as name
-           FROM playlists`, (err, row) => {
-        if (err) {
-            console.error(err.message);
-        }
-        console.log(row.id + "\t" + row.name);
-    });
-});
-
-db.close((err) => {
-    if (err) {
-        console.error(err.message);
-    }
-    console.log('Close the database connection.');
-});
+module.exports = Connection

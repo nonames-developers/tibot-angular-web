@@ -9,8 +9,6 @@ var ROSLIB = require('roslib');
 
 module.exports.cargar = function (servidorExpress) {
 
-
-
     var ros = new ROSLIB.Ros({
         url: 'ws://localhost:9090'
     });
