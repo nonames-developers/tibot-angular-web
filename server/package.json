@@ -1,14 +1,30 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "Connection.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "//": "npm run test",
+  "name": "servidorrest",
+  "description": "2019",
+  "license": "LGPL-3.0",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "no hay"
   },
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "servidor": "node mainServidorREST.js",
+    "test": "node ./node_modules/mocha/bin/mocha"
+  },
   "dependencies": {
-    "sqlite3": "^5.0.2"
-  }
+    "cors": "^2.8.5",
+    "express": "*",
+    "mathjs": "^8.1.0",
+    "node-fetch": "^2.6.1",
+    "request": "*",
+    "roslib": "^1.1.0",
+    "roslibjs-client": "^0.2.1",
+    "rosnodejs": "^3.0.2"
+  },
+  "devDependencies": {
+    "mocha": "^8.2.0"
+  },
+  "main": "main.js",
+  "author": ""
 }
