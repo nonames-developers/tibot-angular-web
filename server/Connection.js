@@ -6,7 +6,7 @@ class Connection {
         this.conn = null
     }
 
-    getConnection() {
+    getConn() {
         if (this.conn == null) {
             this.conn = new sqlite3.Database('./tibot.db', sqlite3.OPEN_READWRITE, (err) => {
                 if (err) {
@@ -19,7 +19,7 @@ class Connection {
         return this.conn;
     }
 
-    closeConnection() {
+    closeConn() {
         db.close((err) => {
             if (err) {
                 console.error(err.message);
