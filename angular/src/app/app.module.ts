@@ -23,7 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { InicioComponent } from './inicio/inicio.component'; // CLI imports AppRoutingModule
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { NgxJoystickModule } from 'ngx-joystick';
 
 @NgModule({
   declarations: [
@@ -40,6 +40,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     InicioComponent,
     JuegoSnackComponent,
     ConfirmacionExploracion
+    
   ],
   imports: [
     BrowserModule,
@@ -48,7 +49,9 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     AppRoutingModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxJoystickModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
