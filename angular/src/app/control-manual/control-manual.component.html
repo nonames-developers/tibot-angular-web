@@ -1,21 +1,19 @@
 <div class="controlesContainer">
 
-  <h1>Controles</h1>
+  <h1>Escaneo Manual</h1>
+  <img width="400" height="300" src="http://localhost:8000/stream?topic=/turtlebot3/camera/image_raw">
 
-  <div class="panelControles">
-
-    <div class="arriba">
-      <button id="Delante" (click)="moveTo($event)">Arr</button>
+  <div class="container noselect">
+    <div class="zone">
+      <ngx-joystick #staticJoystic [options]="staticOptions" 
+      (start)="onStartStatic($event)"
+      (end)="onEndStatic($event)"
+      (move)="onMoveStatic($event)" 
+      (plainUp)="onPlainUpStatic($event)"
+      (plainDown)="onPlainDownStatic($event)"
+      (plainLeft)="onPlainLeftStatic($event)"
+      (plainRight)="onPlainRightStatic($event)"></ngx-joystick>
     </div>
-    <div class="lados">
-      <button id="Izquierda" (click)="moveTo($event)">Izq</button>
-      <button id="Stop" (click)="moveTo($event)"  class="btnPause">Pause<i class="fa fa-pause"></i> </button>
-      <button id="Derecha" (click)="moveTo($event)">Der</button>
-    <div class="abajo">
-      <button id="Atras" (click)="moveTo($event)">Abj</button>
-    <div class="btn">
-      <button id="Stop" class="finalizar" (click)="moveTo($event)"><a routerLink="" routerLinkActive="active">Finalizar</a></button>
-    </div>
+    <div *ngIf="staticOutputData" class="zone-absolute"></div>
   </div>
-
 </div>
