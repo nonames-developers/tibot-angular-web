@@ -5,144 +5,148 @@ const Connection = require('./connection.js');
 /////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////// GET /////////////////////////////////////////
+module.exports = function(){
+    this.get_user = function(user_id, cb) {
+        let conn = new Connection();
+        let sql = `SELECT * FROM USERS WHERE user_id = ?`;
+        let data = user_id;
+        conn.getConn().get(sql, data, function (err, row) {
+            if (err) return console.log(err.message);
+            conn.closeConn();
+            cb(row);
+        });
+    }
+    
+    ///////////////////////////////////////// INSERT /////////////////////////////////////////
+    this.insert_user = function(user_id, birth_date, house_name = 'NULL') {
+        let conn = new Connection();
+        let sql = `INSERT INTO USERS(user_id, birth_date, house_name) VALUES(?, ?, ?)`;
+        let data = [user_id, birth_date, house_name];
+        let result = "";
+        conn.getConn().run(sql, data, function (err) {
+            if (err) result = err.message;
+            else result = `A row has been inserted with rowid ${this.lastID}`;
+            console.log(result);
+            conn.closeConn();
+        });
 
-function get_user(user_id, cb) {
-    let conn = new Connection();
-    let sql = `SELECT * FROM USERS WHERE user_id = ?`;
-    let data = user_id;
-    conn.getConn().get(sql, data, function (err, row) {
-        if (err) return console.log(err.message);
-        conn.closeConn();
-        cb(row);
-    });
+    }
+    
+    ///////////////////////////////////////// DELETE /////////////////////////////////////////
+    this.delete_user = function(user_id) {
+        let conn = new Connection();
+        let sql = `DELETE FROM USERS WHERE user_id = ?`;
+        let data = user_id;
+        conn.getConn().run(sql, data, function (err) {
+            if (err) result = err.message;
+            else result = `Row(s) deleted ${this.changes}`;
+            console.log(result);
+            conn.closeConn();
+        });
+    }
+    
+    ///////////////////////////////////////// UPDATE /////////////////////////////////////////
+    this.update_user = function (user_id, birth_date, house_name) {
+        let conn = new Connection();
+        let sql = `UPDATE USERS SET birth_date = ?, house_name = ? WHERE user_id = ?`;
+        let data = [birth_date, house_name, user_id];
+        let result = "";
+        conn.getConn().run(sql, data, function (err) {
+            if (err) result = err.message;
+            else result = `A row has been updated with rowid ${this.lastID}`;
+            console.log(result);
+            conn.closeConn();
+        });
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////// HIDE_GAMES /////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    
+    ///////////////////////////////////////// GET /////////////////////////////////////////
+    
+    this.get_hide_game = function (user_fk, cb) {
+        let conn = new Connection();
+        let sql = `SELECT * FROM HIDE_GAMES WHERE user_fk = ?`;
+        let data = user_fk;
+        conn.getConn().get(sql, data, function (err, row) {
+            if (err) return console.log(err.message);
+            conn.closeConn();
+            cb(row);
+        });
+    }
+    
+    ///////////////////////////////////////// INSERT /////////////////////////////////////////
+    this.insert_hide_game = function (start, end, is_winner, level, score, user_fk) {
+        let conn = new Connection();
+        let sql = `INSERT INTO HIDE_GAMES(start, end, is_winner, level, score, user_fk) VALUES(?, ?, ?, ?, ?, ?)`;
+        let data = [start, end, is_winner, level, score, user_fk];
+        let result = "";
+        conn.getConn().run(sql, data, function (err) {
+            if (err) result = err.message;
+            else result = `A row has been inserted with rowid ${this.lastID}`;
+            console.log(result);
+
+            conn.closeConn();
+        });
+    }
+    
+    ///////////////////////////////////////// DELETE /////////////////////////////////////////
+    this.delete_hide_game = function (hide_id, user_fk) {
+        let conn = new Connection();
+        let sql = `DELETE FROM HIDE_GAMES WHERE hide_id = ? AND user_fk = ?`;
+        let data = [hide_id, user_fk];
+        conn.getConn().run(sql, data, function (err) {
+            if (err) result = err.message;
+            else result = `Row(s) deleted ${this.changes}`;
+            console.log(result);
+            conn.closeConn();
+        });
+    }
+    
+    this.delete_hide_games = function (user_fk) {
+        let conn = new Connection();
+        let sql = `DELETE FROM HIDE_GAMES WHERE user_fk = ?`;
+        let data = user_fk;
+        conn.getConn().run(sql, data, function (err) {
+            if (err) result = err.message;
+            else result = `Row(s) deleted ${this.changes}`;
+            console.log(result);
+            conn.closeConn();
+        });
+    }
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////// PHRASES /////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    
+    ///////////////////////////////////////// GET /////////////////////////////////////////
+    this.get_phrase = function (phrase_id, cb) {
+        let conn = new Connection();
+        let sql = `SELECT * FROM PHRASES WHERE phrase_id = ?`;
+        let data = phrase_id;
+        conn.getConn().get(sql, data, function (err, row) {
+            if (err) return console.log(err.message);
+            conn.closeConn();
+            cb(row);
+        });
+    }
+    
+    ///////////////////////////////////////// INSERT /////////////////////////////////////////
+    this.insert_phrase = function (phrase) {
+        let conn = new Connection();
+        let sql = `INSERT INTO PHRASES(phrase) VALUES(?)`;
+        let data = phrase;
+        let result = "";
+        conn.getConn().run(sql, data, function (err) {
+            if (err) result = err.message;
+            else result = `A row has been inserted with rowid ${this.lastID}`;
+            console.log(result);
+            conn.closeConn();
+        });
+    }
 }
 
-///////////////////////////////////////// INSERT /////////////////////////////////////////
-function insert_user(user_id, birth_date, house_name = 'NULL') {
-    let conn = new Connection();
-    let sql = `INSERT INTO USERS(user_id, birth_date, house_name) VALUES(?, ?, ?)`;
-    let data = [user_id, birth_date, house_name];
-    let result = "";
-    conn.getConn().run(sql, data, function (err) {
-        if (err) result = err.message;
-        else result = `A row has been inserted with rowid ${this.lastID}`;
-        console.log(result);
-        conn.closeConn();
-    });
-}
-
-///////////////////////////////////////// DELETE /////////////////////////////////////////
-function delete_user(user_id) {
-    let conn = new Connection();
-    let sql = `DELETE FROM USERS WHERE user_id = ?`;
-    let data = user_id;
-    conn.getConn().run(sql, data, function (err) {
-        if (err) result = err.message;
-        else result = `Row(s) deleted ${this.changes}`;
-        console.log(result);
-        conn.closeConn();
-    });
-}
-
-///////////////////////////////////////// UPDATE /////////////////////////////////////////
-function update_user(user_id, birth_date, house_name) {
-    let conn = new Connection();
-    let sql = `UPDATE USERS SET birth_date = ?, house_name = ? WHERE user_id = ?`;
-    let data = [birth_date, house_name, user_id];
-    let result = "";
-    conn.getConn().run(sql, data, function (err) {
-        if (err) result = err.message;
-        else result = `A row has been updated with rowid ${this.lastID}`;
-        console.log(result);
-        conn.closeConn();
-    });
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////// HIDE_GAMES /////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////// GET /////////////////////////////////////////
-
-function get_hide_game(user_fk, cb) {
-    let conn = new Connection();
-    let sql = `SELECT * FROM HIDE_GAMES WHERE user_fk = ?`;
-    let data = user_fk;
-    conn.getConn().get(sql, data, function (err, row) {
-        if (err) return console.log(err.message);
-        conn.closeConn();
-        cb(row);
-    });
-}
-
-///////////////////////////////////////// INSERT /////////////////////////////////////////
-function insert_hide_game(start, end, is_winner, level, score, user_fk) {
-    let conn = new Connection();
-    let sql = `INSERT INTO HIDE_GAMES(start, end, is_winner, level, score, user_fk) VALUES(?, ?, ?, ?, ?, ?)`;
-    let data = [start, end, is_winner, level, score, user_fk];
-    let result = "";
-    conn.getConn().run(sql, data, function (err) {
-        if (err) result = err.message;
-        else result = `A row has been inserted with rowid ${this.lastID}`;
-        console.log(result);
-        conn.closeConn();
-    });
-}
-
-///////////////////////////////////////// DELETE /////////////////////////////////////////
-function delete_hide_game(hide_id, user_fk) {
-    let conn = new Connection();
-    let sql = `DELETE FROM HIDE_GAMES WHERE hide_id = ? AND user_fk = ?`;
-    let data = [hide_id, user_fk];
-    conn.getConn().run(sql, data, function (err) {
-        if (err) result = err.message;
-        else result = `Row(s) deleted ${this.changes}`;
-        console.log(result);
-        conn.closeConn();
-    });
-}
-
-function delete_hide_games(user_fk) {
-    let conn = new Connection();
-    let sql = `DELETE FROM HIDE_GAMES WHERE user_fk = ?`;
-    let data = user_fk;
-    conn.getConn().run(sql, data, function (err) {
-        if (err) result = err.message;
-        else result = `Row(s) deleted ${this.changes}`;
-        console.log(result);
-        conn.closeConn();
-    });
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////// PHRASES /////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////// GET /////////////////////////////////////////
-function get_phrase(phrase_id, cb) {
-    let conn = new Connection();
-    let sql = `SELECT * FROM PHRASES WHERE phrase_id = ?`;
-    let data = phrase_id;
-    conn.getConn().get(sql, data, function (err, row) {
-        if (err) return console.log(err.message);
-        conn.closeConn();
-        cb(row);
-    });
-}
-
-///////////////////////////////////////// INSERT /////////////////////////////////////////
-function insert_phrase(phrase) {
-    let conn = new Connection();
-    let sql = `INSERT INTO PHRASES(phrase) VALUES(?)`;
-    let data = phrase;
-    let result = "";
-    conn.getConn().run(sql, data, function (err) {
-        if (err) result = err.message;
-        else result = `A row has been inserted with rowid ${this.lastID}`;
-        console.log(result);
-        conn.closeConn();
-    });
-}
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// MAIN /////////////////////////////////////////
@@ -180,4 +184,4 @@ function main() {
 
 }
 
-main()
+//main()
