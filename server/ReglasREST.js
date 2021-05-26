@@ -8,8 +8,10 @@
 
 require('./ros')();
 require('./dao')();
+
 module.exports.cargar = function (servidorExpress) {
 
+    // Test 
     servidorExpress.get('/prueba/', function (peticion, respuesta) {
         console.log(" * GET /prueba ");
         let obj = {
@@ -18,33 +20,16 @@ module.exports.cargar = function (servidorExpress) {
         console.log(peticion.query)
         respuesta.send(JSON.stringify(obj.query));
     });
-    // Camara
 
-    //
-    // COSAS DE BBDD
-    //
-    servidorExpress.get('/get_phrase', function (peticion, respuesta) {
-        console.log(" * GET /get_phrase ");
-        get_phrase(peticion.query.phrase_id,(phrase)=>{
-            respuesta.send(JSON.stringify(phrase));
+    servidorExpress.get('/playVoice', function (peticion, respuesta) {
+        // define the service to be called
+        get_phrase(peticion.query.phrase_id, (phrase) => {
+            playVoice(phrase, (data) => {
+                respuesta.send(JSON.stringify(data))
+            })
         })
     });
 
-    servidorExpress.get('/insert_phrase', function (peticion, respuesta) {
-        console.log(" * GET /insert_phrase ");
-        insert_phrase(peticion.query.phrase);
-        console.log()
-        // DEBERIA DE HABER CALLBACK DEL METODO
-        let obj = {
-            response:"Successful"
-        }
-        respuesta.send(JSON.stringify(obj))
-    });
-
-
-    //
-    // COSAS DE ROS
-    //
     servidorExpress.get('/mover', function (peticion, respuesta) {
         // define the service to be called
         mover(peticion.query.place, (data) => {
@@ -90,7 +75,7 @@ module.exports.cargar = function (servidorExpress) {
         });
     });
 
-    servidorExpress.get('/mapa',function(peticion,respuesta){
+    servidorExpress.get('/mapa', function (peticion, respuesta) {
         respuesta.sendFile('/home/marcelo/catkin_ws/src/tibot/tibot_navigation_system/maps/mymap.pgm')
     });
 

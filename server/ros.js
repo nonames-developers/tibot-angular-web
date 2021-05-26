@@ -19,7 +19,36 @@ ros.on('close', function () {
 
 module.exports = function () {
 
-    this.mover =function(place,cb) {
+    this.playVoice = function (strPhrase, cb) {
+        let service = new ROSLIB.Service({
+            ros: ros,
+            name: '/play_voice_robot_service',
+            serviceType: 'tibot_navigation_system/VoiceMsg',
+        })
+        // define the request
+        let request = new ROSLIB.ServiceRequest({
+            phrase: strPhrase
+        })
+        // define a callback
+        service.callService(request, (result) => {
+            console.log('This is the response of the service ')
+            console.log(result)
+            let obj = {
+                response: "Success",
+                data: result
+            }
+            cb(obj);
+        }, (error) => {
+            let obj = {
+                response: "Failed",
+                data: error,
+
+            }
+            cb(obj);
+        })
+    }
+
+    this.mover = function (place, cb) {
         let service = new ROSLIB.Service({
             ros: ros,
             name: '/move_robot_service',
@@ -40,7 +69,7 @@ module.exports = function () {
             cb(obj);
         }, (error) => {
             let obj = {
-                response: "Success",
+                response: "Failed",
                 data: error,
 
             }
@@ -48,9 +77,9 @@ module.exports = function () {
         })
     }
 
-    this.explorar =function(cb) {
-         // define the service to be called
-         let service = new ROSLIB.Service({
+    this.explorar = function (cb) {
+        // define the service to be called
+        let service = new ROSLIB.Service({
             ros: ros,
             name: '/automatic_mapping_service',
             serviceType: 'tibot_navigation_system/AutomaticExploration',
@@ -70,7 +99,7 @@ module.exports = function () {
             cb(obj);
         }, (error) => {
             let obj = {
-                response: "Success",
+                response: "Failed",
                 data: error,
 
             }
@@ -78,7 +107,7 @@ module.exports = function () {
         })
     }
 
-    this.moverAtras = function(cb){
+    this.moverAtras = function (cb) {
         let topic = new ROSLIB.Topic({
             ros: ros,
             name: '/cmd_vel',
@@ -111,7 +140,7 @@ module.exports = function () {
         }
     }
 
-    this.moverDelante = function(cb){
+    this.moverDelante = function (cb) {
         let topic = new ROSLIB.Topic({
             ros: ros,
             name: '/cmd_vel',
@@ -144,7 +173,7 @@ module.exports = function () {
         }
     }
 
-    this.moverDerecha = function(cb){
+    this.moverDerecha = function (cb) {
         // define the service to be called
         let topic = new ROSLIB.Topic({
             ros: ros,
@@ -178,7 +207,7 @@ module.exports = function () {
         }
     }
 
-    this.moverIzquierda = function(cb){
+    this.moverIzquierda = function (cb) {
         let topic = new ROSLIB.Topic({
             ros: ros,
             name: '/cmd_vel',
@@ -208,10 +237,10 @@ module.exports = function () {
                 data: err
             }
             cb(obj);
-        }  
+        }
     }
 
-    this.moverStop = function(cb){
+    this.moverStop = function (cb) {
         // define the service to be called
         let topic = new ROSLIB.Topic({
             ros: ros,
@@ -245,11 +274,11 @@ module.exports = function () {
         }
     }
 
-    this.stream_camera = function(cb){
+    this.stream_camera = function (cb) {
 
     }
 
-    this.borrarMapa = function(cb){
+    this.borrarMapa = function (cb) {
         let topic = new ROSLIB.Topic({
             ros: ros,
             name: '/syscommand',
