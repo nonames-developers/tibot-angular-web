@@ -12,10 +12,11 @@ class Connection {
                 if (err) {
                     console.error(err.message);
                     return false;
+                } else {
+                    console.log('Connected to the tibot database.');
                 }
             });
         }
-        console.log('Connected to the tibot database.');
         return this.conn;
     }
 
@@ -24,7 +25,6 @@ class Connection {
             if (err) {
                 console.error(err.message);
             }
-            console.log('Close the database connection.');
         });
     }
 
