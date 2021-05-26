@@ -24,6 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { InicioComponent } from './inicio/inicio.component'; // CLI imports AppRoutingModule
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxJoystickModule } from 'ngx-joystick';
+import { MapaEscaneadoComponent } from './mapa-escaneado/mapa-escaneado.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { NgxJoystickModule } from 'ngx-joystick';
     PopUpReconocimiento,
     InicioComponent,
     JuegoSnackComponent,
-    ConfirmacionExploracion
+    ConfirmacionExploracion,
+    MapaEscaneadoComponent
     
   ],
   imports: [
