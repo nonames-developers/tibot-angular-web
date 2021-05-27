@@ -45,6 +45,25 @@ module.exports.cargar = function (servidorExpress) {
     //
     // COSAS DE ROS
     //
+
+    servidorExpress.get('/searchFigure', function (peticion, respuesta) {
+        console.log(" * GET /playSound ");
+        let obj = {
+            figure:peticion.query.figure,
+            color:peticion.query.color
+        }
+        searchFigure(obj,(res)=>{
+            respuesta.send(JSON.stringify(res))
+        });
+    });
+
+    servidorExpress.get('/playSound', function (peticion, respuesta) {
+        console.log(" * GET /playSound ");
+        playSound(peticion.query.phrase_id,(res)=>{
+            respuesta.send(JSON.stringify(res))
+        });
+    });
+
     servidorExpress.get('/mover', function (peticion, respuesta) {
         // define the service to be called
         mover(peticion.query.place, (data) => {

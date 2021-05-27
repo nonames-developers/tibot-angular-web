@@ -19,4 +19,12 @@ export class DataService {
 
     return this.http.get<any>('http://localhost:8080/mover'+dir);
   }
+
+  playSound(id):Observable<any>{
+    return this.http.get<any>('http://localhost:8080/playSound?phrase_id='+id);
+  }
+
+  searchFigure(figure,color):Observable<any>{
+    return this.http.get<any>('http://localhost:8080/searchFigure?figure='+figure+"&color="+color);
+  }
 }
