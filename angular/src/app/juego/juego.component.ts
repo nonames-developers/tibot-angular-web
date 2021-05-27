@@ -18,22 +18,32 @@ export class JuegoComponent implements OnInit {
   constructor(private _snackBar: MatSnackBar,private dataSvc: DataService) {}
 
   openSnackBar() {
-    let place = this.getRandomPlace();
 
-
-    this.dataSvc.move(place).subscribe(res => {
-      console.log('Res', res)
-      this._snackBar.open("Me he escondido en "+place);
+    this.dataSvc.playSound(2);
+    let listaFigura = [""]
+    let figura = this.getRandomFigure();
+    let color = this.getRandomColor();
+    console.log("Busco un "+figura+" de color "+color)
+    this._snackBar.open("Busco un "+figura+" de color "+color);
+    this.dataSvc.searchFigure(figura,color).subscribe(res => {
+      console.log('Res', res);
+      this._snackBar.open("LO HE ENCONTRADO");
     });
 
 
   }
 
-   getRandomPlace(): string {
-    let placeList = ["bed", "table", "wardrobe"];
+   getRandomFigure(): string {
+    let placeList = ["cuadrado", "triangulo", "circulo"];
     let index:number = Math.round(Math.random() * (3 - 1));
     let place:string = placeList[index]
     return place;
+}
+getRandomColor(): string {
+  let placeList = ["azul", "rojo", "verde"];
+  let index:number = Math.round(Math.random() * (3 - 1));
+  let place:string = placeList[index]
+  return place;
 }
 
 

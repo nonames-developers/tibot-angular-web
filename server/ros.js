@@ -19,7 +19,67 @@ ros.on('close', function () {
 
 module.exports = function () {
 
-    this.playVoice = function (strPhrase, cb) {
+
+    this.searchFigure =function(obj,cb) {
+        let service = new ROSLIB.Service({
+            ros: ros,
+            name: '/figure_game_robot_service',
+            serviceType: 'tibot_navigation_system/FigureMsg',
+        })
+        // define the request
+        let request = new ROSLIB.ServiceRequest({
+            figure: obj.figure,
+            color: obj.color
+        })
+        // define a callback
+        service.callService(request, (result) => {
+            console.log('This is the response of the service ')
+            console.log(result)
+            let obj = {
+                response: "Success",
+                data: result
+            }
+            cb(obj);
+        }, (error) => {
+            let obj = {
+                response: "Success",
+                data: error,
+
+            }
+            cb(obj);
+        })
+    }
+
+    this.playSound =function(placeStr,cb) {
+        let service = new ROSLIB.Service({
+            ros: ros,
+            name: '/play_voice_robot_service',
+            serviceType: 'tibot_navigation_system/VoiceMsg',
+        })
+        // define the request
+        let request = new ROSLIB.ServiceRequest({
+            phrase: placeStr
+        })
+        // define a callback
+        service.callService(request, (result) => {
+            console.log('This is the response of the service ')
+            console.log(result)
+            let obj = {
+                response: "Success",
+                data: result
+            }
+            cb(obj);
+        }, (error) => {
+            let obj = {
+                response: "Success",
+                data: error,
+
+            }
+            cb(obj);
+        })
+    }
+
+    this.mover =function(place,cb) {
         let service = new ROSLIB.Service({
             ros: ros,
             name: '/play_voice_robot_service',
